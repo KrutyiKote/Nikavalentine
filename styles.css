@@ -1,0 +1,190 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Градієнт */
+    background: linear-gradient(-45deg, #fcebeb, #ffe4e1, #ffb7b2, #fcebeb);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Montserrat', sans-serif;
+    /* ВАЖЛИВО: Дозволяємо вертикальний скрол, забороняємо горизонтальний */
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    flex-direction: column;
+}
+
+/* Фон залишається на місці при скролі */
+.floating-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Все інше залишаємо як було */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.floating-item {
+    position: absolute;
+    bottom: -100px;
+    opacity: 0.7;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.fade-in {
+    animation: fadeInAnimation 2s ease-in forwards;
+    opacity: 0;
+}
+
+h1.fade-in {
+    animation-delay: 0.2s;
+}
+
+.gif_container.fade-in {
+    animation-delay: 0.8s;
+}
+
+.buttons.fade-in {
+    animation-delay: 1.5s;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    text-align: center;
+    z-index: 1;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%; /* Щоб контейнер не стискався */
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3em;
+    color: #d32f2f;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.3);
+}
+
+.gif_container img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    align-items: center;
+    margin-bottom: 50px; /* Відступ знизу, щоб було куди скролити */
+}
+
+button {
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.yes-button {
+    font-size: 1.5em;
+    padding: 12px 24px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    z-index: 10;
+}
+
+.no-button {
+    font-size: 1.5em;
+    padding: 12px 24px;
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 50px;
+}
+
+/* Стилі для заголовку на фінальній сторінці */
+.header_text {
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Мобільна адаптація */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .yes-button, .no-button {
+        font-size: 1.2em;
+    }
+}

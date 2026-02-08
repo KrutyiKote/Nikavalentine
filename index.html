@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Будеш моєю валентинкою?</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="floating-bg" id="floating-bg"></div>
+
+    <div class="container" id="question-screen">
+        <h1 class="fade-in">Ти станеш моєю валентинкою (трикутничкою)?</h1>
+
+        <div class="gif_container fade-in">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3lzdGRhcTRiNTg4cWlvNWpoZ3Z1eTM3N2Z4ZWtxejc5eTAydHJ2NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/8nrIzx9c7KXhY2BXlZ/giphy.gif" alt="Cute gif">
+        </div>
+
+        <div class="buttons fade-in">
+            <button class="yes-button" onclick="handleYesClick()">Так :з</button>
+            <button class="no-button" onclick="handleNoClick()">Ні</button>
+        </div>
+    </div>
+
+    <div class="container" id="success-screen" style="display: none;">
+        <h1 class="header_text">ТААА я так і знав ❤️😈</h1>
+        <div class="gif_container">
+            <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjQyOXc3bWRnNzZjN3NleW10Zm1jaGJ6NWt0cjQyM3Q5enRuazYxZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/j6TifDXmMSS2g2TZ08/giphy.gif" alt="Happy Cat">
+        </div>
+    </div>
+
+    <audio id="music-ask" loop>
+        <source src="music_ask.mp3" type="audio/mp3">
+    </audio>
+    <audio id="music-happy" loop>
+        <source src="music_happy.mp3" type="audio/mp3">
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        const askAudio = document.getElementById("music-ask");
+        askAudio.volume = 0.2;
+
+        // Спроба автоплею
+        askAudio.play().catch(() => {
+            // Якщо браузер заблокував, чекаємо першого тику
+            document.body.addEventListener('click', () => {
+                // Граємо тільки якщо ще не перейшли на фінал
+                if (document.getElementById('question-screen').style.display !== 'none') {
+                    askAudio.play();
+                }
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>
