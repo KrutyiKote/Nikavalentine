@@ -9,19 +9,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Градієнт */
+    /* ГѓГ°Г Г¤ВіВєГ­ГІ */
     background: linear-gradient(-45deg, #fcebeb, #ffe4e1, #ffb7b2, #fcebeb);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     font-family: 'Montserrat', sans-serif;
-    /* ВАЖЛИВО: Дозволяємо вертикальний скрол, забороняємо горизонтальний */
+    /* Г‚ГЂГ†Г‹Г€Г‚ГЋ: Г„Г®Г§ГўГ®Г«ГїВєГ¬Г® ГўГҐГ°ГІГЁГЄГ Г«ГјГ­ГЁГ© Г±ГЄГ°Г®Г«, Г§Г ГЎГ®Г°Г®Г­ГїВєГ¬Г® ГЈГ®Г°ГЁГ§Г®Г­ГІГ Г«ГјГ­ГЁГ© */
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
     flex-direction: column;
 }
 
-/* Фон залишається на місці при скролі */
+/* Г”Г®Г­ Г§Г Г«ГЁГёГ ВєГІГјГ±Гї Г­Г  Г¬ВіГ±Г¶Ві ГЇГ°ГЁ Г±ГЄГ°Г®Г«Ві */
 .floating-bg {
     position: fixed;
     top: 0;
@@ -32,7 +32,7 @@ body {
     z-index: -1;
 }
 
-/* Все інше залишаємо як було */
+/* Г‚Г±ГҐ ВіГ­ГёГҐ Г§Г Г«ГЁГёГ ВєГ¬Г® ГїГЄ ГЎГіГ«Г® */
 @keyframes gradientBG {
     0% {
         background-position: 0% 50%;
@@ -104,7 +104,7 @@ h1.fade-in {
     z-index: 1;
     padding: 20px;
     max-width: 600px;
-    width: 100%; /* Щоб контейнер не стискався */
+    width: 100%; /* Г™Г®ГЎ ГЄГ®Г­ГІГҐГ©Г­ГҐГ° Г­ГҐ Г±ГІГЁГ±ГЄГ ГўГ±Гї */
 }
 
 h1 {
@@ -131,18 +131,27 @@ h1 {
     gap: 20px;
     margin-top: 30px;
     align-items: center;
-    margin-bottom: 50px; /* Відступ знизу, щоб було куди скролити */
+    margin-bottom: 50px; /* Г‚ВіГ¤Г±ГІГіГЇ Г§Г­ГЁГ§Гі, Г№Г®ГЎ ГЎГіГ«Г® ГЄГіГ¤ГЁ Г±ГЄГ°Г®Г«ГЁГІГЁ */
 }
 
 button {
     font-family: inherit;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    /* Р”РѕРґР°С”РјРѕ will-change РґР»СЏ РїР»Р°РІРЅРѕСЃС‚С– */
+    will-change: transform, font-size; 
+    /* Р’РёРєРѕСЂРёСЃС‚РѕРІСѓС”РјРѕ transform-origin, С‰РѕР± РєРЅРѕРїРєР° СЂРѕСЃР»Р° Р· С†РµРЅС‚СЂСѓ */
+    transform-origin: center;
+    /* РџРѕРєСЂР°С‰СѓС”РјРѕ СЂРµРЅРґРµСЂРёРЅРі */
+    -webkit-font-smoothing: antialiased;
+    
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .yes-button {
+    /* Р”РѕРґР°Р№ С†РµР№ СЂСЏРґРѕРє, С‰РѕР± Р·Р°РїРѕР±С–РіС‚Рё РїРµСЂРµРЅРѕСЃСѓ С‚РµРєСЃС‚Сѓ РїСЂРё СЂРѕСЃС‚С– */
+    white-space: nowrap; 
     font-size: 1.5em;
     padding: 12px 24px;
     background-color: #4caf50;
@@ -161,7 +170,7 @@ button {
     border-radius: 50px;
 }
 
-/* Стилі для заголовку на фінальній сторінці */
+/* Г‘ГІГЁГ«Ві Г¤Г«Гї Г§Г ГЈГ®Г«Г®ГўГЄГі Г­Г  ГґВіГ­Г Г«ГјГ­ВіГ© Г±ГІГ®Г°ВіГ­Г¶Ві */
 .header_text {
     animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -178,7 +187,7 @@ button {
     }
 }
 
-/* Мобільна адаптація */
+/* ГЊГ®ГЎВіГ«ГјГ­Г  Г Г¤Г ГЇГІГ Г¶ВіГї */
 @media (max-width: 600px) {
     h1 {
         font-size: 2em;
