@@ -14,7 +14,7 @@
 <body>
     <div class="floating-bg" id="floating-bg"></div>
 
-    <div class="container">
+    <div class="container" id="question-screen">
         <h1 class="fade-in">Ти станеш моєю валентинкою (трикутничкою)?</h1>
 
         <div class="gif_container fade-in">
@@ -27,22 +27,35 @@
         </div>
     </div>
 
-    <audio id="bg-music" loop>
+    <div class="container" id="success-screen" style="display: none;">
+        <h1 class="header_text">ТААА я так і знав ❤️😈</h1>
+        <div class="gif_container">
+            <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjQyOXc3bWRnNzZjN3NleW10Zm1jaGJ6NWt0cjQyM3Q5enRuazYxZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/j6TifDXmMSS2g2TZ08/giphy.gif" alt="Happy Cat">
+        </div>
+    </div>
+
+    <audio id="music-ask" loop>
         <source src="music_ask.mp3" type="audio/mp3">
     </audio>
+    <audio id="music-happy" loop>
+        <source src="music_happy.mp3" type="audio/mp3">
+    </audio>
 
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 
     <script>
-        // Скрипт для запуску музики
-        const audio = document.getElementById("bg-music");
-        audio.volume = 0.2; // Гучність 20%
+        const askAudio = document.getElementById("music-ask");
+        askAudio.volume = 0.2;
 
-        // Пробуємо запустити одразу (може заблокувати браузер)
-        audio.play().catch(() => {
-            // Якщо заблокувало, чекаємо першого кліку по сторінці
+        // Спроба автоплею
+        askAudio.play().catch(() => {
+            // Якщо браузер заблокував, чекаємо першого тику
             document.body.addEventListener('click', () => {
-                audio.play();
+                // Граємо тільки якщо ще не перейшли на фінал
+                if (document.getElementById('question-screen').style.display !== 'none') {
+                    askAudio.play();
+                }
             }, { once: true });
         });
     </script>
