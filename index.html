@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Будеш моєю валентинкою?</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="floating-bg" id="floating-bg"></div>
+
+    <div class="container">
+        <h1 class="fade-in">Ти станеш моєю валентинкою (трикутничкою)?</h1>
+
+        <div class="gif_container fade-in">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3lzdGRhcTRiNTg4cWlvNWpoZ3Z1eTM3N2Z4ZWtxejc5eTAydHJ2NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/8nrIzx9c7KXhY2BXlZ/giphy.gif" alt="Cute gif">
+        </div>
+
+        <div class="buttons fade-in">
+            <button class="yes-button" onclick="handleYesClick()">Так :з</button>
+            <button class="no-button" onclick="handleNoClick()">Ні</button>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="music_ask.mp3" type="audio/mp3">
+    </audio>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Скрипт для запуску музики
+        const audio = document.getElementById("bg-music");
+        audio.volume = 0.2; // Гучність 20%
+
+        // Пробуємо запустити одразу (може заблокувати браузер)
+        audio.play().catch(() => {
+            // Якщо заблокувало, чекаємо першого кліку по сторінці
+            document.body.addEventListener('click', () => {
+                audio.play();
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урааа!</title>
+    <link rel="stylesheet" href="./yes_style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="header_text">ТААА я так і знав ❤️😈❤️</h1>
+        <div class="gif_container">
+            <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjQyOXc3bWRnNzZjN3NleW10Zm1jaGJ6NWt0cjQyM3Q5enRuazYxZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/j6TifDXmMSS2g2TZ08/giphy.gif" alt="Happy Cat">
+        </div>
+    </div>
+
+    <audio id="victory-music" autoplay loop>
+        <source src="music_happy.mp3" type="audio/mp3">
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // Налаштування гучності
+        const victoryAudio = document.getElementById("victory-music");
+        victoryAudio.volume = 0.1;
+
+        // Конфетті
+        window.onload = () => {
+            const duration = 3000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#ff0000', '#ffa500', '#ffff00', '#008000', '#0000ff', '#4b0082', '#ee82ee']
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#ff0000', '#ffa500', '#ffff00', '#008000', '#0000ff', '#4b0082', '#ee82ee']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        };
+    </script>
+</body>
+</html>
