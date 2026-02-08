@@ -1,20 +1,38 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    /* ���������� ���䳺����� ��� */
+    /* Градієнт */
     background: linear-gradient(-45deg, #fcebeb, #ffe4e1, #ffb7b2, #fcebeb);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     font-family: 'Montserrat', sans-serif;
-    flex-direction: column;
-    overflow: hidden;
+    /* ВАЖЛИВО: Дозволяємо вертикальний скрол, забороняємо горизонтальний */
+    overflow-x: hidden;
+    overflow-y: auto;
     position: relative;
+    flex-direction: column;
 }
 
-/* �������� ������� ���� */
+/* Фон залишається на місці при скролі */
+.floating-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Все інше залишаємо як було */
 @keyframes gradientBG {
     0% {
         background-position: 0% 50%;
@@ -29,18 +47,6 @@ body {
     }
 }
 
-/* ��������� ��� ���� */
-.floating-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* ����� ��� ���� PNG �������� */
 .floating-item {
     position: absolute;
     bottom: -100px;
@@ -64,7 +70,6 @@ body {
     }
 }
 
-/* �������� ����� �������� */
 .fade-in {
     animation: fadeInAnimation 2s ease-in forwards;
     opacity: 0;
@@ -99,6 +104,7 @@ h1.fade-in {
     z-index: 1;
     padding: 20px;
     max-width: 600px;
+    width: 100%; /* Щоб контейнер не стискався */
 }
 
 h1 {
@@ -125,6 +131,7 @@ h1 {
     gap: 20px;
     margin-top: 30px;
     align-items: center;
+    margin-bottom: 50px; /* Відступ знизу, щоб було куди скролити */
 }
 
 button {
@@ -154,7 +161,24 @@ button {
     border-radius: 50px;
 }
 
-/* ������� ��������� */
+/* Стилі для заголовку на фінальній сторінці */
+.header_text {
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Мобільна адаптація */
 @media (max-width: 600px) {
     h1 {
         font-size: 2em;
